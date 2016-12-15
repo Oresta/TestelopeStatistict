@@ -1,0 +1,86 @@
+doctype
+html(lang='en')
+  head
+    meta(charset='utf-8' name="viewport" content="width=device-width; initial-scale=1.0")
+    link(rel="stylesheet", href="css/main.min.css" media)
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+    title Testelope
+  body
+    header
+      .toggle-sidebar.left
+        a(href="#")
+          i(class="fa fa-bars fa-2x bars" aria-hidden="true")
+
+      .search.left
+        form
+          input.search-text(type="search" placeholder="Search")
+      .info.right
+        .info-logo
+          img(src="images/vet_profile_img.png")
+        .info-name Anny Frost
+        .info-additional
+          i(class="fa fa-ellipsis-h fa-custom" aria-hidden="true")
+
+    mixin add-nav-item(text)
+      li.aside-nav-item
+        a(href="#")
+          img.aside-nav-item-image(src="images/teams_hover.png")
+          span.aside-nav-item-text= text
+
+    mixin add-result-item(name, count, text)
+      tr
+        td.name= name
+          td
+            .count= count
+          td.text= text
+
+    mixin add-statistics-item(text, progressColor, count)
+      -var name = "progress-value-" + progressColor;
+      .statistics-item
+        .statistics-item-text.left= text
+        .statistics-item-progress.left
+          .progress
+            div(class=name)
+        .statistics-item-count.left= count
+
+    #overlay
+    aside.left
+      nav
+        ul
+          li
+            .logo
+              img(src="images/logo.png").logo-img
+          +add-nav-item("teams")(class="selected")
+          +add-nav-item("tesbooks")
+          +add-nav-item("statistics")
+
+    main.left
+      h4 ryder cup us 2015
+      nav
+        ul.tabs
+          li.tab-item.selected
+            a(href="#") results
+          li.tab-item
+            a(href="#") team
+          li.tab-item
+            a(href="#") settings
+
+      .statistics
+        +add-statistics-item("Best", "blue", 45)
+        +add-statistics-item("Worst", "violet", 21)
+        +add-statistics-item("Average", "yellow", 30)
+
+      .results-table
+        table
+          +add-result-item("Rickie Fowler", "45", "qty")
+          +add-result-item("Dusin Johnsson", "15", "qty")
+          +add-result-item("Jordan Spieth", "55", "qty")
+          +add-result-item("Rickie Fowler", "45", "qty")
+          +add-result-item("Dusin Johnsson", "15", "qty")
+          +add-result-item("Jordan Spieth", "55", "qty")
+          +add-result-item("Rickie Fowler", "45", "qty")
+          +add-result-item("Dusin Johnsson", "15", "qty")
+          +add-result-item("Jordan Spieth", "55", "qty")
+
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
+  script(src="index.js")
