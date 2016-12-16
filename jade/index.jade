@@ -4,83 +4,116 @@ html(lang='en')
     meta(charset='utf-8' name="viewport" content="width=device-width; initial-scale=1.0")
     link(rel="stylesheet", href="css/main.min.css" media)
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
-    title Testelope
+    title MyAPP
   body
-    header
-      .toggle-sidebar.left
+    header.body-header
+      .logo.left
+        img(src="images/logo.png").logo-img
+      .toggle-sidebar.right
         a(href="#")
           i(class="fa fa-bars fa-2x bars" aria-hidden="true")
-
-      .search.left
-        form
-          input.search-text(type="search" placeholder="Search")
-      .info.right
-        .info-logo
-          img(src="images/vet_profile_img.png")
-        .info-name Anny Frost
-        .info-additional
-          i(class="fa fa-ellipsis-h fa-custom" aria-hidden="true")
-
-    mixin add-nav-item(text)
+      .logout.right
+        img(src="images/logout.png").logout-img
+        span.logout-text Logout
+    mixin add-nav-item(imageName, text)
+      - var url = "images/" + imageName + ".png"
       li.aside-nav-item
         a(href="#")
-          img.aside-nav-item-image(src="images/teams_hover.png")
+          img.aside-nav-item-image(src=url)
           span.aside-nav-item-text= text
 
-    mixin add-result-item(name, count, text)
-      tr
-        td.name= name
-          td
-            .count= count
-          td.text= text
-
-    mixin add-statistics-item(text, progressColor, count)
-      -var name = "progress-value-" + progressColor;
-      .statistics-item
-        .statistics-item-text.left= text
-        .statistics-item-progress.left
-          .progress
-            div(class=name)
-        .statistics-item-count.left= count
-
     #overlay
-    aside.left
+    aside
       nav
-        ul
-          li
-            .logo
-              img(src="images/logo.png").logo-img
-          +add-nav-item("teams")(class="selected")
-          +add-nav-item("tesbooks")
-          +add-nav-item("statistics")
+        .nav-header Menu
+        ul.aside-menu-list
+          +add-nav-item("heart_icon", "Welcome")
+          +add-nav-item("star", "BCG")
+          +add-nav-item("profile", "My Organization")
+          +add-nav-item("logo_icon", "myAPP")
+          +add-nav-item("heart_icon", "Good Faith Efforts")
+          +add-nav-item("star", "Narrative Manages")
+          +add-nav-item("profile", "Dashboard")
+          +add-nav-item("logo_icon", "Files")
+          +add-nav-item("star", "Learning Resources")
+          +add-nav-item("heart_icon", "Subscription")
 
-    main.left
-      h4 ryder cup us 2015
-      nav
-        ul.tabs
-          li.tab-item.selected
-            a(href="#") results
-          li.tab-item
-            a(href="#") team
-          li.tab-item
-            a(href="#") settings
+      .aside-logo
+        img(src="images/logo.png")
 
-      .statistics
-        +add-statistics-item("Best", "blue", 45)
-        +add-statistics-item("Worst", "violet", 21)
-        +add-statistics-item("Average", "yellow", 30)
+    main
+      header.box-header
+        span.left-text Learning Resources&nbsp&#8226&nbsp
+        span.rigth-text Ask an EEO Expert
+      .post
+        .post-left.left
+          img(src="images/calendar_icon.png").post-left-image
+          .post-left-line
+        .post-message.left
+          p.post-message-header EEO-1 and Vets 100/100a Q&A
+          p Friday, October 3, 2014
+          p My company has multiple locations. When I filed the EEO-1 report,
+            | a consolidated report was created when I filed for each location.
+            | Is there a consolidated cpmpany report for the Vets 100A as well?
+            | <br>Answer: There isn't a consolidated report (for the entire company)
+            | for Vets 100a filing. The EEO-1 filing is slightly different from Vets.
+            | <br>Should US expats working abroad or foreign hires working in the US on a
+            | temporary basis be counted on either the 100A or EEO-1 reports?
+          p.post-message-header Answer:
+          p US expats should not be reported since they work physically outside
+            | of the US. Temp employees should be excluded as well. <br>If a recently
+            | separated vet is hired, when 36 months from the date of discharge
+            | pass, do you still count them as a recently separated vet or do you
+            | change their veteran status? <br>Answer: They should not be counted as a
+            | recently separated veteran. Please see FAQ:
+            | https://www.dol.gov/vets/contractor/main.htm#32
 
-      .results-table
-        table
-          +add-result-item("Rickie Fowler", "45", "qty")
-          +add-result-item("Dusin Johnsson", "15", "qty")
-          +add-result-item("Jordan Spieth", "55", "qty")
-          +add-result-item("Rickie Fowler", "45", "qty")
-          +add-result-item("Dusin Johnsson", "15", "qty")
-          +add-result-item("Jordan Spieth", "55", "qty")
-          +add-result-item("Rickie Fowler", "45", "qty")
-          +add-result-item("Dusin Johnsson", "15", "qty")
-          +add-result-item("Jordan Spieth", "55", "qty")
+      .post
+        .post-left.left
+          img(src="images/calendar_icon.png").post-left-image
+          .post-left-line
+        .post-message.left
+          p.post-message-header EEO-1 and Vets 100/100a Q&A
+          p Friday, October 3, 2014
+          p My company has multiple locations. When I filed the EEO-1 report,
+            | a consolidated report was created when I filed for each location.
+            | Is there a consolidated cpmpany report for the Vets 100A as well?
+            | <br>Answer: There isn't a consolidated report (for the entire company)
+            | for Vets 100a filing. The EEO-1 filing is slightly different from Vets.
+            | <br>Should US expats working abroad or foreign hires working in the US on a
+            | temporary basis be counted on either the 100A or EEO-1 reports?
+          p.post-message-header Answer:
+          p US expats should not be reported since they work physically outside
+            | of the US. Temp employees should be excluded as well. <br>If a recently
+            | separated vet is hired, when 36 months from the date of discharge
+            | pass, do you still count them as a recently separated vet or do you
+            | change their veteran status? <br>Answer: They should not be counted as a
+            | recently separated veteran. Please see FAQ:
+            | https://www.dol.gov/vets/contractor/main.htm#32
+
+      .post
+        .post-left.left
+          img(src="images/calendar_icon.png").post-left-image
+          .post-left-line
+        .post-message.left
+          p.post-message-header EEO-1 and Vets 100/100a Q&A
+          p Friday, October 3, 2014
+          p My company has multiple locations. When I filed the EEO-1 report,
+            | a consolidated report was created when I filed for each location.
+            | Is there a consolidated cpmpany report for the Vets 100A as well?
+            | <br>Answer: There isn't a consolidated report (for the entire company)
+            | for Vets 100a filing. The EEO-1 filing is slightly different from Vets.
+            | <br>Should US expats working abroad or foreign hires working in the US on a
+            | temporary basis be counted on either the 100A or EEO-1 reports?
+          p.post-message-header Answer:
+          p US expats should not be reported since they work physically outside
+            | of the US. Temp employees should be excluded as well. <br>If a recently
+            | separated vet is hired, when 36 months from the date of discharge
+            | pass, do you still count them as a recently separated vet or do you
+            | change their veteran status? <br>Answer: They should not be counted as a
+            | recently separated veteran. Please see FAQ:
+            | https://www.dol.gov/vets/contractor/main.htm#32
+
 
   script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
   script(src="index.js")
